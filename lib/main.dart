@@ -3,15 +3,13 @@ import 'package:movies/util/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-
 import 'config/app_config.dart';
 import 'route/pages_routes.dart';
 
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await _preload();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(
       GetMaterialApp(
         debugShowCheckedModeBanner: false,
@@ -21,18 +19,18 @@ void main() async {
         theme: Themes().lightTheme,
         darkTheme: Themes().darkTheme,
         themeMode: ThemeMode.light,
+        initialBinding: InitialBinding(),
       )
   );
 }
 
-
-Future _preload() async {
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
-  Get.put(AppConfig.instance);
-  Get.put(Themes(), permanent: true);
-
-  await Future.wait([
-    AppConfig().load(),
-  ]);
+class InitialBinding extends Bindings {
+  @override
+  void dependencies() async {
+    Get.put(AppConfig.instance);
+    Get.put(Themes(), permanent: true);
+    await Future.wait([
+      AppConfig().load(),
+    ]);
+  }
 }
