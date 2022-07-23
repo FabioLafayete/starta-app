@@ -9,8 +9,8 @@ class HomeRepositoryImpl extends HomeRepository{
   final HomeService homeService;
 
   @override
-  Future<PopularMoviesModel> getPopularMovies() {
-    return homeService.getPopularMovies().then(
+  Future<PopularMoviesModel> getPopularMovies({int? page}) {
+    return homeService.getPopularMovies(page: page).then(
             (value) => PopularMoviesModel.fromJson(value.data)
     );
   }

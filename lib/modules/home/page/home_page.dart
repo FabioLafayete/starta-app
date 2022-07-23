@@ -15,11 +15,10 @@ class HomePage extends BaseWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context) {
 
-    return controller.obx(
+    return viewModel.obx(
       (PopularMoviesModel? model) => HomeView(model: model!),
       onLoading: LoadingView(),
       onError: (error) => _tryAgain(text: error),
-      onEmpty: _tryAgain()
     );
   }
 

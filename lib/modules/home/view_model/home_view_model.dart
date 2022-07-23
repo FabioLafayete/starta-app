@@ -16,6 +16,12 @@ class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
   PopularMoviesModel? model;
   final HomeRepositoryImpl repositoryImpl;
 
+  final RxBool _loading = RxBool(false);
+
+  bool get loading => _loading.value;
+
+  setLoading(bool value) => _loading.value = value;
+
   Future getData() async {
     try{
       change(null, status: RxStatus.loading());
@@ -24,6 +30,21 @@ class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
     }catch(error){
       log(error.toString());
       change(null, status: RxStatus.error('Falha ao carregar filmes'));
+    }
+  }
+
+  Future getDataMorePage() async {
+    try{
+      setLoading(true);
+      PopularMoviesModel data = await repositoryImpl.getPopularMovies(page: model!.page + 1);
+      model = data.copyWith(
+        results: [...model!.results, ...data.results]
+      );
+      change(model, status: RxStatus.success());
+    }catch(error){
+      log(error.toString());
+    } finally {
+      setLoading(false);
     }
   }
 

@@ -11,10 +11,13 @@ class HomeServiceImpl implements HomeService {
   final HttpService _service;
 
   @override
-  Future<Response> getPopularMovies() {
+  Future<Response> getPopularMovies({int? page}) {
     return _service.request(
       type: RequestType.GET,
       path: HomeConstants.popularMovies,
+      queryParameters: page != null ? {
+        'page': page
+      } : null
     );
   }
 
