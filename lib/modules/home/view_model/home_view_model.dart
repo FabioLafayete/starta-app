@@ -1,7 +1,21 @@
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
+import 'package:get/get.dart';
 
-class HomeViewModel extends GetxController {
+class HomeViewModel extends GetxController with StateMixin<List<String>>{
+
+  HomeViewModel({
+    required this.test
+  }) : super() {
+    //change(null, status: RxStatus.error(test));
+    //RxStatus.error(test);
+    change(['', '', ''], status: RxStatus.success());
+    print('CHEGOU AQUI');
+  }
+
+  final String test;
 
 
+  void setError(String error) {
+
+  }
 
 }
