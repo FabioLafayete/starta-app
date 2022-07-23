@@ -1,21 +1,31 @@
-import 'package:get/get.dart';
+import 'dart:developer';
 
-class HomeViewModel extends GetxController with StateMixin<List<String>>{
+import 'package:get/get.dart';
+import 'package:movies/modules/home/model/popular_movies/popular_movies_model.dart';
+import 'package:movies/modules/home/repository/impl/home_repository_impl.dart';
+
+class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
 
   HomeViewModel({
-    required this.test
+    this.model,
+    required this.repositoryImpl
   }) : super() {
-    //change(null, status: RxStatus.error(test));
-    //RxStatus.error(test);
-    change(['', '', ''], status: RxStatus.success());
-    print('CHEGOU AQUI');
+    getData();
   }
 
-  final String test;
+  PopularMoviesModel? model;
+  final HomeRepositoryImpl repositoryImpl;
 
-
-  void setError(String error) {
-
+  Future getData() async {
+    try{
+      change(null, status: RxStatus.loading());
+      model = await repositoryImpl.getPopularMovies();
+      change(model, status: RxStatus.success());
+    }catch(error){
+      log(error.toString());
+      change(null, status: RxStatus.error('Falha ao carregar filmes'));
+    }
   }
+
 
 }

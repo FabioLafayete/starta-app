@@ -29,6 +29,7 @@ class InitialBinding extends Bindings {
   void dependencies() async {
     Get.put(AppConfig.instance);
     Get.put(Themes(), permanent: true);
+    Themes().toggleDarkMode();
     await Future.wait([
       AppConfig().load(),
     ]);
