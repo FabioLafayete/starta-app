@@ -52,6 +52,7 @@ class BasePage extends BaseWidget {
       text(title!, color: colors.text, fontWeight: FontWeight.w600),
       backgroundColor: colors.background,
       automaticallyImplyLeading: automaticallyImplyLeading,
+      centerTitle: true,
       actions: actions,
     );
   }

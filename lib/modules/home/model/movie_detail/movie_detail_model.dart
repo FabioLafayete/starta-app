@@ -5,6 +5,8 @@ part 'movie_detail_model.g.dart';
 
 @freezed
 class MovieDetailModel with _$MovieDetailModel {
+  const MovieDetailModel._();
+
   const factory MovieDetailModel({
     required int id,
     required String title,
@@ -18,6 +20,9 @@ class MovieDetailModel with _$MovieDetailModel {
     @Default(false) bool adult,
     String? homepage
   }) = _MovieDetailModel;
+
+  String getPosterHD() => 'https://image.tmdb.org/t/p/w500/$posterPath';
+  String getPosterFullHD() => 'https://image.tmdb.org/t/p/w1280/$posterPath';
 
   factory MovieDetailModel.fromJson(Map<String, dynamic> json) =>
       _$MovieDetailModelFromJson(json);

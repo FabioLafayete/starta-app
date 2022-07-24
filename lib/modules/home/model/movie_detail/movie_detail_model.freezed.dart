@@ -231,7 +231,7 @@ class __$$_MovieDetailModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_MovieDetailModel implements _MovieDetailModel {
+class _$_MovieDetailModel extends _MovieDetailModel {
   const _$_MovieDetailModel(
       {required this.id,
       required this.title,
@@ -243,7 +243,8 @@ class _$_MovieDetailModel implements _MovieDetailModel {
       @JsonKey(name: 'poster_path') required this.posterPath,
       @JsonKey(name: 'release_date') required this.releaseDate,
       this.adult = false,
-      this.homepage});
+      this.homepage})
+      : super._();
 
   factory _$_MovieDetailModel.fromJson(Map<String, dynamic> json) =>
       _$$_MovieDetailModelFromJson(json);
@@ -332,7 +333,7 @@ class _$_MovieDetailModel implements _MovieDetailModel {
   }
 }
 
-abstract class _MovieDetailModel implements MovieDetailModel {
+abstract class _MovieDetailModel extends MovieDetailModel {
   const factory _MovieDetailModel(
       {required final int id,
       required final String title,
@@ -345,6 +346,7 @@ abstract class _MovieDetailModel implements MovieDetailModel {
       @JsonKey(name: 'release_date') required final String releaseDate,
       final bool adult,
       final String? homepage}) = _$_MovieDetailModel;
+  const _MovieDetailModel._() : super._();
 
   factory _MovieDetailModel.fromJson(Map<String, dynamic> json) =
       _$_MovieDetailModel.fromJson;

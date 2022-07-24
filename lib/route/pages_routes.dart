@@ -1,3 +1,5 @@
+import 'package:movies/modules/movie_detail/bindings/movie_details_binding.dart';
+import 'package:movies/modules/movie_detail/page/movie_details_page.dart';
 import 'package:movies/route/pages_name.dart';
 import 'package:get/get.dart';
 
@@ -10,6 +12,11 @@ abstract class PagesRoutes {
         name: PagesNames.home,
         page: () => HomePage(),
         binding: HomeBindings()
+    ),
+    GetPage(
+        name: PagesNames.movieDetails,
+        page: () => MovieDetailsPage(),
+        binding: MovieDetailsBindings()
     ),
   ];
 }
