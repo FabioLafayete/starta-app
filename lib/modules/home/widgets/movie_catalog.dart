@@ -16,7 +16,7 @@ class MovieCatalog extends BaseWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+        print(model.id);
       },
       child: Container(
         decoration: BoxDecoration(

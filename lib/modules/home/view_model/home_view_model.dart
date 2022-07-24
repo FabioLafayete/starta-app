@@ -7,7 +7,6 @@ import 'package:movies/modules/home/repository/impl/home_repository_impl.dart';
 class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
 
   HomeViewModel({
-    this.model,
     required this.repositoryImpl
   }) : super() {
     getData();
