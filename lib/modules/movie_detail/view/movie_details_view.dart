@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:movies/modules/movie_detail/model/movie_details_page_model.dart';
+import 'package:movies/modules/movie_detail/model/movie_details_page/movie_details_page_model.dart';
+import 'package:movies/modules/movie_detail/widgets/item_movie_widget.dart';
 import 'package:movies/widgets/base_page.dart';
 import 'package:movies/widgets/base_widget.dart';
 
@@ -32,7 +33,16 @@ class MovieDetailsView extends BaseWidget {
                 ],
               ),
             ),
-            _information()
+            _information(),
+            space(0.01),
+            Column(
+              children: List.generate(
+                  model.moviesSimilar.results.length,
+                      (index) => ItemMovieWidget(
+                        model: model.moviesSimilar.results[index]
+                      )
+              ),
+            )
           ],
         ),
       ),
@@ -41,9 +51,7 @@ class MovieDetailsView extends BaseWidget {
 
   Widget _information(){
     return Container(
-      padding: const EdgeInsets.all(10).copyWith(
-        left: 12, right: 12
-      ),
+      padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Column(
         children: [
           Row(
@@ -129,7 +137,7 @@ class MovieDetailsView extends BaseWidget {
                 Colors.transparent,
                 colors.background,
               ],
-              stops: const [0.4, 0.99]
+              stops: const [0.4, 0.97]
           )
       ),
     );

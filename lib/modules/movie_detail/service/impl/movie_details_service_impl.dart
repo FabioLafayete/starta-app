@@ -25,4 +25,12 @@ class MovieDetailsServiceImpl implements MovieDetailsService {
     );
   }
 
+  @override
+  Future<Response> getGenres() {
+    return _service.request(
+      type: RequestType.GET,
+      path: MovieDetailsConstants.genres,
+    );
+  }
+
 }

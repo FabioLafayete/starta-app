@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/modules/home/view/loading_view.dart';
-import 'package:movies/modules/movie_detail/model/movie_details_page_model.dart';
+import 'package:movies/modules/movie_detail/model/movie_details_page/movie_details_page_model.dart';
 import 'package:movies/modules/movie_detail/view/movie_details_view.dart';
 import 'package:movies/modules/movie_detail/view_model/movie_details_view_model.dart';
 import 'package:movies/widgets/base_widget.dart';

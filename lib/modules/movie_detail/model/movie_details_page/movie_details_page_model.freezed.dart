@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MovieDetailsPageModel {
   PopularMoviesModel get moviesSimilar => throw _privateConstructorUsedError;
   MovieDetailModel get movieDetails => throw _privateConstructorUsedError;
+  List<GenreModel> get genreModel => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MovieDetailsPageModelCopyWith<MovieDetailsPageModel> get copyWith =>
@@ -29,7 +30,10 @@ abstract class $MovieDetailsPageModelCopyWith<$Res> {
   factory $MovieDetailsPageModelCopyWith(MovieDetailsPageModel value,
           $Res Function(MovieDetailsPageModel) then) =
       _$MovieDetailsPageModelCopyWithImpl<$Res>;
-  $Res call({PopularMoviesModel moviesSimilar, MovieDetailModel movieDetails});
+  $Res call(
+      {PopularMoviesModel moviesSimilar,
+      MovieDetailModel movieDetails,
+      List<GenreModel> genreModel});
 
   $PopularMoviesModelCopyWith<$Res> get moviesSimilar;
   $MovieDetailModelCopyWith<$Res> get movieDetails;
@@ -48,6 +52,7 @@ class _$MovieDetailsPageModelCopyWithImpl<$Res>
   $Res call({
     Object? moviesSimilar = freezed,
     Object? movieDetails = freezed,
+    Object? genreModel = freezed,
   }) {
     return _then(_value.copyWith(
       moviesSimilar: moviesSimilar == freezed
@@ -58,6 +63,10 @@ class _$MovieDetailsPageModelCopyWithImpl<$Res>
           ? _value.movieDetails
           : movieDetails // ignore: cast_nullable_to_non_nullable
               as MovieDetailModel,
+      genreModel: genreModel == freezed
+          ? _value.genreModel
+          : genreModel // ignore: cast_nullable_to_non_nullable
+              as List<GenreModel>,
     ));
   }
 
@@ -83,7 +92,10 @@ abstract class _$$_MovieDetailsPageModelCopyWith<$Res>
           $Res Function(_$_MovieDetailsPageModel) then) =
       __$$_MovieDetailsPageModelCopyWithImpl<$Res>;
   @override
-  $Res call({PopularMoviesModel moviesSimilar, MovieDetailModel movieDetails});
+  $Res call(
+      {PopularMoviesModel moviesSimilar,
+      MovieDetailModel movieDetails,
+      List<GenreModel> genreModel});
 
   @override
   $PopularMoviesModelCopyWith<$Res> get moviesSimilar;
@@ -107,6 +119,7 @@ class __$$_MovieDetailsPageModelCopyWithImpl<$Res>
   $Res call({
     Object? moviesSimilar = freezed,
     Object? movieDetails = freezed,
+    Object? genreModel = freezed,
   }) {
     return _then(_$_MovieDetailsPageModel(
       moviesSimilar: moviesSimilar == freezed
@@ -117,6 +130,10 @@ class __$$_MovieDetailsPageModelCopyWithImpl<$Res>
           ? _value.movieDetails
           : movieDetails // ignore: cast_nullable_to_non_nullable
               as MovieDetailModel,
+      genreModel: genreModel == freezed
+          ? _value._genreModel
+          : genreModel // ignore: cast_nullable_to_non_nullable
+              as List<GenreModel>,
     ));
   }
 }
@@ -125,16 +142,25 @@ class __$$_MovieDetailsPageModelCopyWithImpl<$Res>
 
 class _$_MovieDetailsPageModel implements _MovieDetailsPageModel {
   const _$_MovieDetailsPageModel(
-      {required this.moviesSimilar, required this.movieDetails});
+      {required this.moviesSimilar,
+      required this.movieDetails,
+      required final List<GenreModel> genreModel})
+      : _genreModel = genreModel;
 
   @override
   final PopularMoviesModel moviesSimilar;
   @override
   final MovieDetailModel movieDetails;
+  final List<GenreModel> _genreModel;
+  @override
+  List<GenreModel> get genreModel {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genreModel);
+  }
 
   @override
   String toString() {
-    return 'MovieDetailsPageModel(moviesSimilar: $moviesSimilar, movieDetails: $movieDetails)';
+    return 'MovieDetailsPageModel(moviesSimilar: $moviesSimilar, movieDetails: $movieDetails, genreModel: $genreModel)';
   }
 
   @override
@@ -145,14 +171,17 @@ class _$_MovieDetailsPageModel implements _MovieDetailsPageModel {
             const DeepCollectionEquality()
                 .equals(other.moviesSimilar, moviesSimilar) &&
             const DeepCollectionEquality()
-                .equals(other.movieDetails, movieDetails));
+                .equals(other.movieDetails, movieDetails) &&
+            const DeepCollectionEquality()
+                .equals(other._genreModel, _genreModel));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(moviesSimilar),
-      const DeepCollectionEquality().hash(movieDetails));
+      const DeepCollectionEquality().hash(movieDetails),
+      const DeepCollectionEquality().hash(_genreModel));
 
   @JsonKey(ignore: true)
   @override
@@ -164,12 +193,15 @@ class _$_MovieDetailsPageModel implements _MovieDetailsPageModel {
 abstract class _MovieDetailsPageModel implements MovieDetailsPageModel {
   const factory _MovieDetailsPageModel(
       {required final PopularMoviesModel moviesSimilar,
-      required final MovieDetailModel movieDetails}) = _$_MovieDetailsPageModel;
+      required final MovieDetailModel movieDetails,
+      required final List<GenreModel> genreModel}) = _$_MovieDetailsPageModel;
 
   @override
   PopularMoviesModel get moviesSimilar;
   @override
   MovieDetailModel get movieDetails;
+  @override
+  List<GenreModel> get genreModel;
   @override
   @JsonKey(ignore: true)
   _$$_MovieDetailsPageModelCopyWith<_$_MovieDetailsPageModel> get copyWith =>
