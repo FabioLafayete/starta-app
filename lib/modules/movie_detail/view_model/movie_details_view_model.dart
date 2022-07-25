@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/modules/home/model/movie_detail/movie_detail_model.dart';
 import 'package:movies/modules/home/model/popular_movies/popular_movies_model.dart';

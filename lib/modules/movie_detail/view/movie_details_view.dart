@@ -18,42 +18,56 @@ class MovieDetailsView extends BaseWidget {
     return BasePage(
       padding: EdgeInsets.zero,
       showAppBar: false,
-      body: Stack(
-        children: [
-          SizedBox(
-            height: height * 0.55,
-            child: Image.network(
-              model.movieDetails.getPosterFullHD(),
-              fit: BoxFit.cover,
-              filterQuality: FilterQuality.high,
-              alignment: Alignment.topCenter,
-              width: width,
-              loadingBuilder: (_,image, loadingProgress){
-                if (loadingProgress == null) return image;
-                return SizedBox(
-                  height: 300,
-                  child: Center(
-                    child: SpinKitThreeBounce(
-                      color: colors.text,
-                      size: 20,
-                    ),
-                  ),
-                );
-              },
-              errorBuilder: (_,__,___){
-                return Center(
-                  child: Icon(
-                    Icons.image_not_supported_outlined,
-                    size: 25,
-                    color: colors.text,
-                  ),
-                );
-              },
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SizedBox(
+              height: height * 0.56,
+              child: Stack(
+                children: [
+                  _image(),
+                  _effectImage(),
+                  _backButton()
+                ],
+              ),
             ),
-          ),
-          _effectImage(),
-          _backButton()
-        ],
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _image(){
+    return SizedBox(
+      height: height * 0.55,
+      child: Image.network(
+        model.movieDetails.getPosterFullHD(),
+        fit: BoxFit.cover,
+        filterQuality: FilterQuality.high,
+        alignment: Alignment.topCenter,
+        width: width,
+        loadingBuilder: (_,image, loadingProgress){
+          if (loadingProgress == null) return image;
+          return SizedBox(
+            height: 300,
+            child: Center(
+              child: SpinKitThreeBounce(
+                color: colors.text,
+                size: 20,
+              ),
+            ),
+          );
+        },
+        errorBuilder: (_,__,___){
+          return Center(
+            child: Icon(
+              Icons.image_not_supported_outlined,
+              size: 25,
+              color: colors.text,
+            ),
+          );
+        },
       ),
     );
   }
