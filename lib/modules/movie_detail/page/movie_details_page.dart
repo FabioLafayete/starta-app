@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/modules/home/view/loading_view.dart';
+import 'package:movies/modules/movie_detail/model/movie_details_page_model.dart';
 import 'package:movies/modules/movie_detail/view/movie_details_view.dart';
 import 'package:movies/modules/movie_detail/view_model/movie_details_view_model.dart';
 import 'package:movies/widgets/base_widget.dart';
@@ -13,19 +14,17 @@ class MovieDetailsPage extends BaseWidget<MovieDetailsViewModel> {
   @override
   Widget build(BuildContext context) {
     return viewModel.obx(
-      (state) => MovieDetailsView(),
-      onError: (error) => _tryAgain(text: error),
+      (MovieDetailsPageModel? model) => MovieDetailsView(model: model!),
+      onError: (error) => _goBack(text: error),
       onLoading: LoadingView(),
     );
   }
 
-  Widget _tryAgain({String? text}){
+  Widget _goBack({String? text}){
     return EmptyScreen(
       title: text ?? 'Erro ao buscar filmes',
-      nameButton: 'Tentar novamente',
-      onPress: (){
-        controller.getData();
-      },
+      nameButton: 'Voltar',
+      onPress:  Get.back,
     );
   }
 

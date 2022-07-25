@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:movies/modules/home/model/popular_movies/popular_movies_model.dart';
 import 'package:movies/modules/home/repository/impl/home_repository_impl.dart';
+import 'package:movies/route/pages_name.dart';
 
 class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
 
@@ -45,6 +46,13 @@ class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
     } finally {
       setLoading(false);
     }
+  }
+
+  void goToMovieDetails(int id){
+    Get.toNamed(
+        PagesNames.movieDetails,
+        arguments: {'id': id}
+    );
   }
 
 

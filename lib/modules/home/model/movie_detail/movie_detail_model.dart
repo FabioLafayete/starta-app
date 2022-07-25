@@ -16,6 +16,7 @@ class MovieDetailModel with _$MovieDetailModel {
     @JsonKey(name: 'vote_average') required double voteAverage,
     @JsonKey(name: 'vote_count') required double voteCount,
     @JsonKey(name: 'poster_path') required String posterPath,
+    @JsonKey(name: 'backdrop_path') String? backdropPath,
     @JsonKey(name: 'release_date') required String releaseDate,
     @Default(false) bool adult,
     String? homepage
@@ -23,6 +24,9 @@ class MovieDetailModel with _$MovieDetailModel {
 
   String getPosterHD() => 'https://image.tmdb.org/t/p/w500/$posterPath';
   String getPosterFullHD() => 'https://image.tmdb.org/t/p/w1280/$posterPath';
+
+  String getImageHD() => 'https://image.tmdb.org/t/p/w500/$backdropPath';
+  String getImageFullHD() => 'https://image.tmdb.org/t/p/w1280/$backdropPath';
 
   factory MovieDetailModel.fromJson(Map<String, dynamic> json) =>
       _$MovieDetailModelFromJson(json);
