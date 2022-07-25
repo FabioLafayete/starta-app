@@ -32,8 +32,53 @@ class MovieDetailsView extends BaseWidget {
                 ],
               ),
             ),
+            _information()
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _information(){
+    return Container(
+      padding: const EdgeInsets.all(10).copyWith(
+        left: 12, right: 12
+      ),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: text(
+                    model.movieDetails.title,
+                    color: colors.text,
+                    fontWeight: FontWeight.w700,
+                    textAlign: TextAlign.start,
+                    fontSize: 25
+                ),
+              ),
+              IconButton(
+                icon: const Icon(Icons.favorite),
+                color: colors.text,
+                iconSize: 25,
+                onPressed: (){},
+              )
+            ],
+          ),
+          space(0.01),
+          Row(
+            children: [
+              Icon(Icons.favorite, color: colors.text, size: 18),
+              space(0.02, width: true),
+              text('${model.movieDetails.voteCount} Likes'),
+              space(0.05, width: true),
+              Icon(Icons.local_movies_outlined, color: colors.text, size: 18),
+              space(0.02, width: true),
+              text('${model.movieDetails.popularity} view'),
+            ],
+          )
+        ],
       ),
     );
   }
