@@ -27,7 +27,7 @@ class HomePage extends BaseWidget<HomeViewModel> {
       title: text ?? 'Erro ao buscar filmes',
       nameButton: 'Tentar novamente',
       onPress: (){
-        controller.getData();
+        viewModel.getData();
       },
     );
   }

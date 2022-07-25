@@ -26,12 +26,16 @@ mixin _$MovieDetailModel {
   String get originalTitle => throw _privateConstructorUsedError;
   String get overview => throw _privateConstructorUsedError;
   double get popularity => throw _privateConstructorUsedError;
+  @JsonKey(name: 'genre_ids')
+  List<int>? get genreIds => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_average')
   double get voteAverage => throw _privateConstructorUsedError;
   @JsonKey(name: 'vote_count')
   double get voteCount => throw _privateConstructorUsedError;
   @JsonKey(name: 'poster_path')
   String get posterPath => throw _privateConstructorUsedError;
+  @JsonKey(name: 'backdrop_path')
+  String? get backdropPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'release_date')
   String get releaseDate => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
@@ -54,9 +58,11 @@ abstract class $MovieDetailModelCopyWith<$Res> {
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
       double popularity,
+      @JsonKey(name: 'genre_ids') List<int>? genreIds,
       @JsonKey(name: 'vote_average') double voteAverage,
       @JsonKey(name: 'vote_count') double voteCount,
       @JsonKey(name: 'poster_path') String posterPath,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
       @JsonKey(name: 'release_date') String releaseDate,
       bool adult,
       String? homepage});
@@ -78,9 +84,11 @@ class _$MovieDetailModelCopyWithImpl<$Res>
     Object? originalTitle = freezed,
     Object? overview = freezed,
     Object? popularity = freezed,
+    Object? genreIds = freezed,
     Object? voteAverage = freezed,
     Object? voteCount = freezed,
     Object? posterPath = freezed,
+    Object? backdropPath = freezed,
     Object? releaseDate = freezed,
     Object? adult = freezed,
     Object? homepage = freezed,
@@ -106,6 +114,10 @@ class _$MovieDetailModelCopyWithImpl<$Res>
           ? _value.popularity
           : popularity // ignore: cast_nullable_to_non_nullable
               as double,
+      genreIds: genreIds == freezed
+          ? _value.genreIds
+          : genreIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       voteAverage: voteAverage == freezed
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -118,6 +130,10 @@ class _$MovieDetailModelCopyWithImpl<$Res>
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
               as String,
+      backdropPath: backdropPath == freezed
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       releaseDate: releaseDate == freezed
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
@@ -147,9 +163,11 @@ abstract class _$$_MovieDetailModelCopyWith<$Res>
       @JsonKey(name: 'original_title') String originalTitle,
       String overview,
       double popularity,
+      @JsonKey(name: 'genre_ids') List<int>? genreIds,
       @JsonKey(name: 'vote_average') double voteAverage,
       @JsonKey(name: 'vote_count') double voteCount,
       @JsonKey(name: 'poster_path') String posterPath,
+      @JsonKey(name: 'backdrop_path') String? backdropPath,
       @JsonKey(name: 'release_date') String releaseDate,
       bool adult,
       String? homepage});
@@ -173,9 +191,11 @@ class __$$_MovieDetailModelCopyWithImpl<$Res>
     Object? originalTitle = freezed,
     Object? overview = freezed,
     Object? popularity = freezed,
+    Object? genreIds = freezed,
     Object? voteAverage = freezed,
     Object? voteCount = freezed,
     Object? posterPath = freezed,
+    Object? backdropPath = freezed,
     Object? releaseDate = freezed,
     Object? adult = freezed,
     Object? homepage = freezed,
@@ -201,6 +221,10 @@ class __$$_MovieDetailModelCopyWithImpl<$Res>
           ? _value.popularity
           : popularity // ignore: cast_nullable_to_non_nullable
               as double,
+      genreIds: genreIds == freezed
+          ? _value._genreIds
+          : genreIds // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       voteAverage: voteAverage == freezed
           ? _value.voteAverage
           : voteAverage // ignore: cast_nullable_to_non_nullable
@@ -213,6 +237,10 @@ class __$$_MovieDetailModelCopyWithImpl<$Res>
           ? _value.posterPath
           : posterPath // ignore: cast_nullable_to_non_nullable
               as String,
+      backdropPath: backdropPath == freezed
+          ? _value.backdropPath
+          : backdropPath // ignore: cast_nullable_to_non_nullable
+              as String?,
       releaseDate: releaseDate == freezed
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
@@ -238,13 +266,16 @@ class _$_MovieDetailModel extends _MovieDetailModel {
       @JsonKey(name: 'original_title') required this.originalTitle,
       required this.overview,
       required this.popularity,
+      @JsonKey(name: 'genre_ids') final List<int>? genreIds,
       @JsonKey(name: 'vote_average') required this.voteAverage,
       @JsonKey(name: 'vote_count') required this.voteCount,
       @JsonKey(name: 'poster_path') required this.posterPath,
+      @JsonKey(name: 'backdrop_path') this.backdropPath,
       @JsonKey(name: 'release_date') required this.releaseDate,
       this.adult = false,
       this.homepage})
-      : super._();
+      : _genreIds = genreIds,
+        super._();
 
   factory _$_MovieDetailModel.fromJson(Map<String, dynamic> json) =>
       _$$_MovieDetailModelFromJson(json);
@@ -260,6 +291,16 @@ class _$_MovieDetailModel extends _MovieDetailModel {
   final String overview;
   @override
   final double popularity;
+  final List<int>? _genreIds;
+  @override
+  @JsonKey(name: 'genre_ids')
+  List<int>? get genreIds {
+    final value = _genreIds;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
   @override
   @JsonKey(name: 'vote_average')
   final double voteAverage;
@@ -269,6 +310,9 @@ class _$_MovieDetailModel extends _MovieDetailModel {
   @override
   @JsonKey(name: 'poster_path')
   final String posterPath;
+  @override
+  @JsonKey(name: 'backdrop_path')
+  final String? backdropPath;
   @override
   @JsonKey(name: 'release_date')
   final String releaseDate;
@@ -280,7 +324,7 @@ class _$_MovieDetailModel extends _MovieDetailModel {
 
   @override
   String toString() {
-    return 'MovieDetailModel(id: $id, title: $title, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, voteAverage: $voteAverage, voteCount: $voteCount, posterPath: $posterPath, releaseDate: $releaseDate, adult: $adult, homepage: $homepage)';
+    return 'MovieDetailModel(id: $id, title: $title, originalTitle: $originalTitle, overview: $overview, popularity: $popularity, genreIds: $genreIds, voteAverage: $voteAverage, voteCount: $voteCount, posterPath: $posterPath, backdropPath: $backdropPath, releaseDate: $releaseDate, adult: $adult, homepage: $homepage)';
   }
 
   @override
@@ -295,11 +339,14 @@ class _$_MovieDetailModel extends _MovieDetailModel {
             const DeepCollectionEquality().equals(other.overview, overview) &&
             const DeepCollectionEquality()
                 .equals(other.popularity, popularity) &&
+            const DeepCollectionEquality().equals(other._genreIds, _genreIds) &&
             const DeepCollectionEquality()
                 .equals(other.voteAverage, voteAverage) &&
             const DeepCollectionEquality().equals(other.voteCount, voteCount) &&
             const DeepCollectionEquality()
                 .equals(other.posterPath, posterPath) &&
+            const DeepCollectionEquality()
+                .equals(other.backdropPath, backdropPath) &&
             const DeepCollectionEquality()
                 .equals(other.releaseDate, releaseDate) &&
             const DeepCollectionEquality().equals(other.adult, adult) &&
@@ -315,9 +362,11 @@ class _$_MovieDetailModel extends _MovieDetailModel {
       const DeepCollectionEquality().hash(originalTitle),
       const DeepCollectionEquality().hash(overview),
       const DeepCollectionEquality().hash(popularity),
+      const DeepCollectionEquality().hash(_genreIds),
       const DeepCollectionEquality().hash(voteAverage),
       const DeepCollectionEquality().hash(voteCount),
       const DeepCollectionEquality().hash(posterPath),
+      const DeepCollectionEquality().hash(backdropPath),
       const DeepCollectionEquality().hash(releaseDate),
       const DeepCollectionEquality().hash(adult),
       const DeepCollectionEquality().hash(homepage));
@@ -340,9 +389,11 @@ abstract class _MovieDetailModel extends MovieDetailModel {
       @JsonKey(name: 'original_title') required final String originalTitle,
       required final String overview,
       required final double popularity,
+      @JsonKey(name: 'genre_ids') final List<int>? genreIds,
       @JsonKey(name: 'vote_average') required final double voteAverage,
       @JsonKey(name: 'vote_count') required final double voteCount,
       @JsonKey(name: 'poster_path') required final String posterPath,
+      @JsonKey(name: 'backdrop_path') final String? backdropPath,
       @JsonKey(name: 'release_date') required final String releaseDate,
       final bool adult,
       final String? homepage}) = _$_MovieDetailModel;
@@ -363,6 +414,9 @@ abstract class _MovieDetailModel extends MovieDetailModel {
   @override
   double get popularity;
   @override
+  @JsonKey(name: 'genre_ids')
+  List<int>? get genreIds;
+  @override
   @JsonKey(name: 'vote_average')
   double get voteAverage;
   @override
@@ -371,6 +425,9 @@ abstract class _MovieDetailModel extends MovieDetailModel {
   @override
   @JsonKey(name: 'poster_path')
   String get posterPath;
+  @override
+  @JsonKey(name: 'backdrop_path')
+  String? get backdropPath;
   @override
   @JsonKey(name: 'release_date')
   String get releaseDate;

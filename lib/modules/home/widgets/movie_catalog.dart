@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:movies/modules/home/model/movie_detail/movie_detail_model.dart';
+import 'package:movies/modules/home/view_model/home_view_model.dart';
 import 'package:movies/widgets/base_widget.dart';
 
-class MovieCatalog extends BaseWidget {
+class MovieCatalog extends BaseWidget<HomeViewModel> {
 
   MovieCatalog({
     Key? key,
@@ -15,9 +16,7 @@ class MovieCatalog extends BaseWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-
-      },
+      onTap: () => viewModel.goToMovieDetails(model.id),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
