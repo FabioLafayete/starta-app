@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import '../util/colors.dart';
 import 'app_theme_widget.dart';
 
-abstract class BaseWidget<T extends GetxController> extends GetView<T> {
+abstract class BaseWidget<T extends GetxController> extends StatelessWidget {
 
   BaseWidget({Key? key}) : super(key: key);
 

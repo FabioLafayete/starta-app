@@ -16,39 +16,42 @@ class ItemMovieWidget extends BaseWidget<MovieDetailsViewModel> {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          _image(),
-          space(0.03, width: true),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                text(
-                    model.title,
-                    color: colors.text,
-                    fontWeight: FontWeight.w500,
-                    maxLines: 3,
-                    textOverflow: TextOverflow.ellipsis,
-                    fontSize: 18
-                ),
-                space(0.01),
-                Row(
-                  children: [
-                    text(
-                      model.releaseDate.year.toString(),
+      child: GestureDetector(
+        onTap: () => viewModel.goToMovieDetails(model.id),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            _image(),
+            space(0.03, width: true),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  text(
+                      model.title,
                       color: colors.text,
-                    ),
-                    space(0.02, width: true),
-                    Expanded(child: text(viewModel.getGenreById(model.genreIds!)))
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
+                      fontWeight: FontWeight.w500,
+                      maxLines: 3,
+                      textOverflow: TextOverflow.ellipsis,
+                      fontSize: 18
+                  ),
+                  space(0.01),
+                  Row(
+                    children: [
+                      text(
+                        DateTime.parse(model.releaseDate).year.toString(),
+                        color: colors.text,
+                      ),
+                      space(0.02, width: true),
+                      Expanded(child: text(viewModel.getGenreById(model.genreIds!)))
+                    ],
+                  )
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

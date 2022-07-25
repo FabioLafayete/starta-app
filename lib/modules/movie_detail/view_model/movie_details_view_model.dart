@@ -1,18 +1,18 @@
 import 'dart:developer';
-
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movies/modules/home/model/movie_detail/movie_detail_model.dart';
 import 'package:movies/modules/home/model/popular_movies/popular_movies_model.dart';
 import 'package:movies/modules/movie_detail/model/genre/genre_model.dart';
 import 'package:movies/modules/movie_detail/model/movie_details_page/movie_details_page_model.dart';
 import 'package:movies/modules/movie_detail/repository/impl/movie_details_repository_impl.dart';
+import 'package:movies/route/pages_name.dart';
+import 'package:movies/service/storage/local_storage_service.dart';
 
 class MovieDetailsViewModel extends GetxController with StateMixin<MovieDetailsPageModel>{
 
   MovieDetailsViewModel({
    required this.repositoryImpl
-  }) : super(){
+  }) : super() {
     checkIdInArguments();
   }
 
@@ -22,6 +22,8 @@ class MovieDetailsViewModel extends GetxController with StateMixin<MovieDetailsP
   MovieDetailModel? movieDetailModel;
   MovieDetailsPageModel? movieDetailsPageModel;
   List<GenreModel>? genreModel;
+
+  LocalStorageService storage = Get.find<LocalStorageService>();
 
   final Rxn<int> _id = Rxn<int>();
 
@@ -64,7 +66,6 @@ class MovieDetailsViewModel extends GetxController with StateMixin<MovieDetailsP
   }
 
   String getGenreById(List<int> ids){
-
     List<String> names = [];
     late String result;
 
@@ -82,8 +83,27 @@ class MovieDetailsViewModel extends GetxController with StateMixin<MovieDetailsP
       result = result + ', ${names[i]}';
     }
 
-
     return result;
+  }
+
+  void goToMovieDetails(int id){
+    Get.offNamed(PagesNames.movieDetails, arguments: {'id': id}, preventDuplicates: false);
+  }
+
+  bool isFavorite(int id){
+    bool? isSaved = storage.get(id.toString());
+    if(isSaved != null && isSaved) return true;
+    return false;
+  }
+
+  setFavorite(int id){
+    bool isSaved = isFavorite(id);
+    if(isSaved){
+      storage.delete(id.toString());
+    } else {
+      storage.put(id.toString(), true);
+    }
+    change(movieDetailsPageModel, status: RxStatus.success());
   }
 
 }

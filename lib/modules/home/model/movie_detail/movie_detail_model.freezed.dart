@@ -37,7 +37,7 @@ mixin _$MovieDetailModel {
   @JsonKey(name: 'backdrop_path')
   String? get backdropPath => throw _privateConstructorUsedError;
   @JsonKey(name: 'release_date')
-  DateTime get releaseDate => throw _privateConstructorUsedError;
+  String get releaseDate => throw _privateConstructorUsedError;
   bool get adult => throw _privateConstructorUsedError;
   String? get homepage => throw _privateConstructorUsedError;
 
@@ -63,7 +63,7 @@ abstract class $MovieDetailModelCopyWith<$Res> {
       @JsonKey(name: 'vote_count') double voteCount,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
-      @JsonKey(name: 'release_date') DateTime releaseDate,
+      @JsonKey(name: 'release_date') String releaseDate,
       bool adult,
       String? homepage});
 }
@@ -137,7 +137,7 @@ class _$MovieDetailModelCopyWithImpl<$Res>
       releaseDate: releaseDate == freezed
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       adult: adult == freezed
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
@@ -168,7 +168,7 @@ abstract class _$$_MovieDetailModelCopyWith<$Res>
       @JsonKey(name: 'vote_count') double voteCount,
       @JsonKey(name: 'poster_path') String posterPath,
       @JsonKey(name: 'backdrop_path') String? backdropPath,
-      @JsonKey(name: 'release_date') DateTime releaseDate,
+      @JsonKey(name: 'release_date') String releaseDate,
       bool adult,
       String? homepage});
 }
@@ -244,7 +244,7 @@ class __$$_MovieDetailModelCopyWithImpl<$Res>
       releaseDate: releaseDate == freezed
           ? _value.releaseDate
           : releaseDate // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       adult: adult == freezed
           ? _value.adult
           : adult // ignore: cast_nullable_to_non_nullable
@@ -315,7 +315,7 @@ class _$_MovieDetailModel extends _MovieDetailModel {
   final String? backdropPath;
   @override
   @JsonKey(name: 'release_date')
-  final DateTime releaseDate;
+  final String releaseDate;
   @override
   @JsonKey()
   final bool adult;
@@ -394,7 +394,7 @@ abstract class _MovieDetailModel extends MovieDetailModel {
       @JsonKey(name: 'vote_count') required final double voteCount,
       @JsonKey(name: 'poster_path') required final String posterPath,
       @JsonKey(name: 'backdrop_path') final String? backdropPath,
-      @JsonKey(name: 'release_date') required final DateTime releaseDate,
+      @JsonKey(name: 'release_date') required final String releaseDate,
       final bool adult,
       final String? homepage}) = _$_MovieDetailModel;
   const _MovieDetailModel._() : super._();
@@ -430,7 +430,7 @@ abstract class _MovieDetailModel extends MovieDetailModel {
   String? get backdropPath;
   @override
   @JsonKey(name: 'release_date')
-  DateTime get releaseDate;
+  String get releaseDate;
   @override
   bool get adult;
   @override

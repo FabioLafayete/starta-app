@@ -12,7 +12,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  get:
+  get: 4.6.5
+  get_storage: 2.0.3
   dio:
   freezed_annotation:
   json_annotation: 4.6.0

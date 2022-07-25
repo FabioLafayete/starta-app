@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:movies/modules/movie_detail/model/movie_details_page/movie_details_page_model.dart';
+import 'package:movies/modules/movie_detail/view_model/movie_details_view_model.dart';
 import 'package:movies/modules/movie_detail/widgets/item_movie_widget.dart';
 import 'package:movies/widgets/base_page.dart';
 import 'package:movies/widgets/base_widget.dart';
 
-class MovieDetailsView extends BaseWidget {
+class MovieDetailsView extends BaseWidget<MovieDetailsViewModel> {
   MovieDetailsView({
     Key? key,
     required this.model
@@ -67,10 +68,11 @@ class MovieDetailsView extends BaseWidget {
                 ),
               ),
               IconButton(
-                icon: const Icon(Icons.favorite),
+                icon: Icon(viewModel.isFavorite(model.movieDetails.id) ?
+                Icons.favorite : Icons.favorite_border),
                 color: colors.text,
                 iconSize: 25,
-                onPressed: (){},
+                onPressed: () => viewModel.setFavorite(model.movieDetails.id),
               )
             ],
           ),

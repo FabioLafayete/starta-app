@@ -20,7 +20,7 @@ class HomeView extends BaseWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-        title: 'Filmes Populares',
+        title: 'Popular Movies',
         body: Obx(() => Container(
           margin: const EdgeInsets.only(top: 20),
           child: NotificationListener<ScrollNotification>(

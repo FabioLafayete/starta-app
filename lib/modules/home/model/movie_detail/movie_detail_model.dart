@@ -18,7 +18,7 @@ class MovieDetailModel with _$MovieDetailModel {
     @JsonKey(name: 'vote_count') required double voteCount,
     @JsonKey(name: 'poster_path') required String posterPath,
     @JsonKey(name: 'backdrop_path') String? backdropPath,
-    @JsonKey(name: 'release_date') required DateTime releaseDate,
+    @JsonKey(name: 'release_date') required String releaseDate,
     @Default(false) bool adult,
     String? homepage
   }) = _MovieDetailModel;
