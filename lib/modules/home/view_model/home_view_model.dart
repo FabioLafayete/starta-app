@@ -49,7 +49,6 @@ class HomeViewModel extends GetxController with StateMixin<PopularMoviesModel>{
   }
 
   void goToMovieDetails(int id){
-    print(id);
     Get.toNamed(
         PagesNames.movieDetails,
         arguments: {'id': id}
